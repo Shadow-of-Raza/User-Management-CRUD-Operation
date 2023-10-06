@@ -1,0 +1,16 @@
+.error-message {
+    color: red;
+  }
+  .error-message-minlength {
+    color: red;
+  }
+  .error-message-maxlength {
+    color: red;
+  }
+  .error-message-pattern {
+    color: red;
+  }
+  .error-message-required {
+    color: red;
+  }
+  

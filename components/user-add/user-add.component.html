@@ -1,0 +1,79 @@
+<div class="container mt-4">
+    <h2>Add User</h2>
+  
+    <!-- User Add Form using Template-Driven Form -->
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+      <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" class="form-control" name="username" minlength="3" [(ngModel)]="user.username" required>
+            <!--For validation We use-->
+            <div *ngIf="userForm.controls['username'].errors?.['minlength']&& userForm.controls['username'].touched" class="error-message-minlength">
+                *please enter atleast 3 characters
+            </div>
+            <div *ngIf="userForm.controls['username'].errors?.['required'] && userForm.controls['username'].touched" class="error-message-required">
+                *please enter full name
+            </div>
+      </div>
+  
+
+      <div class="mb-3">
+        <label for="useremail" class="form-label">Email</label>
+        <input type="email" id="useremail" class="form-control" name="useremail" [(ngModel)]="user.useremail" required email pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}">
+        <!--For validation We use-->
+        <div *ngIf="userForm.controls['useremail'].errors?.['required'] && userForm.controls['useremail'].touched" class="error-message-required">
+            *please enter valid email
+        </div>
+        <div *ngIf="userForm.controls['useremail'].errors?.['pattern'] && userForm.controls['useremail'].touched" class="error-message-pattern">
+            *please enter a valid email address (e.g., example@example.com)
+        </div>
+    </div>
+    
+
+
+      <div class="mb-3">
+        <label for="userphno" class="form-label">Phone Number</label>
+        <input type="text" id="userphno" class="form-control" name="userphno" maxlength="10" [(ngModel)]="user.userphno" pattern="^[6-9]\d{9}$" required>
+        <!--For validation We use-->
+        <div *ngIf="userForm.controls['userphno'].errors?.['maxLength'] && userForm.controls['userphno'].touched" class="error-message-minlength">
+            *contact number cannot be more than 10 digits
+        </div>
+        <div *ngIf="userForm.controls['userphno'].errors?.['required'] && userForm.controls['userphno'].touched" class="error-message-required">
+            *please enter contact number
+        </div>
+        <div *ngIf="userForm.controls['userphno'].errors?.['pattern'] && userForm.controls['userphno'].touched" class="error-message-pattern">
+            *please enter a valid contact number starting with 6, 7, 8, or 9 and having exactly 10 digits
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="useraddress" class="form-label">Address</label>
+        <input type="text" id="useraddress" class="form-control" name="useraddress" minlength="3" [(ngModel)]="user.useraddress" required>
+        <!--For validation We use-->
+        <div *ngIf="userForm.controls['useraddress'].errors?.['minlength']&& userForm.controls['useraddress'].touched" class="error-message-minlength">
+            *please enter atleast 3 characters
+        </div>
+        <div *ngIf="userForm.controls['useraddress'].errors?.['required']&& userForm.controls['useraddress'].touched" class="error-message-required">
+            *please enter address
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="userpassword" class="form-label">Password</label>
+        <input type="password" id="userpassword" class="form-control" name="userpassword" [(ngModel)]="user.userpassword"
+          pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$" minlength="3" required>
+          <!--For validation We use-->
+          <div *ngIf="userForm.controls['userpassword'].errors?.['required'] && userForm.controls['userpassword'].touched" class="error-message-required">
+            *please enter password
+          </div>
+          <div *ngIf="userForm.controls['userpassword'].errors?.['minlength'] && userForm.controls['userpassword'].touched" class="error-message-minlength">
+            *password must be at least 6 characters long
+          </div>
+          <div *ngIf="userForm.controls['userpassword'].errors?.['pattern'] && userForm.controls['userpassword'].touched" class="error-message-pattern">
+            *password must contain at least one special character, one letter, and one number
+          </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Add User</button>
+    </form>
+  </div>

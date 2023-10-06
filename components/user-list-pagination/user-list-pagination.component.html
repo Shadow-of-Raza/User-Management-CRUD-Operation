@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <h2>User List Pagination</h2>
+
+  <!-- Table to display user data -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through user data and display it for the current page -->
+      <tr *ngFor="let user of displayedUsers">
+        <td>{{ user.userid }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.useremail }}</td>
+        <td>{{ user.userphno }}</td>
+        <td>{{ user.useraddress }}</td>
+        <td>{{ user.userpassword }}</td>
+        <td>
+          <!-- Add buttons for edit and delete actions -->
+          <button class="btn btn-sm btn-primary" (click)="editUser(user.userid)">Edit</button>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.userid)">Delete</button>
+        </td>
+      </tr>
+    </tbody>  
+  </table>
+
+  <!-- Items per page dropdown (positioned to the left of pagination controls) -->
+  <div class="form-group d-flex justify-content-center">
+    <label for="itemsPerPage" class="display-6">Items per page:</label>
+    <select class="form-control mx-3 w-25" id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </select>
+  
+
+  <!-- Pagination controls -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-end">
+      <li class="page-item" *ngIf="currentPage > 1">
+        <a class="page-link" (click)="prevPage()">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of getPages()" [class.active]="page === currentPage">
+        <a class="page-link" (click)="setPage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" *ngIf="currentPage < totalPages">
+        <a class="page-link" (click)="nextPage()">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</div>

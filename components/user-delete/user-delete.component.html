@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <h2>Delete User</h2>
+  
+    <!-- User Delete Form -->
+    <form #userForm="ngForm" (ngSubmit)="onDelete()">
+
+      <div class="mb-3">
+        <label for="userId" class="form-label">User ID</label>
+        <input type="number" id="userId" class="form-control" name="userId" [(ngModel)]="userId" required>
+        <!-- For validation, you can add error messages here if needed -->
+      </div>
+
+      <button type="submit" class="btn btn-danger">Delete User</button>
+    </form>
+</div>

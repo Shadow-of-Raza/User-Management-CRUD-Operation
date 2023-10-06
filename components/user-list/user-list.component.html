@@ -1,0 +1,44 @@
+
+
+
+
+
+
+<div class="container mt-4">
+    <h2>User List</h2>
+  
+    <!-- Table to display user data -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Address</th>
+          <th>Password</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through user data and display it -->
+        <tr *ngFor="let user of users">
+          <td>{{ user.userid }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.useremail }}</td>
+          <td>{{ user.userphno }}</td>
+          <td>{{ user.useraddress }}</td>
+          <td>{{ user.userpassword }}</td>
+          <td>
+            <!-- Add buttons for edit and delete actions -->
+            <button class="btn btn-sm btn-primary" (click)="editUser(user.userid)">Edit</button>
+            </td>
+            <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user.userid)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
